@@ -182,15 +182,16 @@ function Header() {
     >
       <div className={cn("container flex items-center justify-between gap-6 transition-all duration-500", scrolled ? "h-16" : "h-[76px]")}>
         <Logo />
-        <nav className="hidden items-center gap-7 lg:flex">
+        <nav className="hidden items-center gap-5 lg:flex xl:gap-7">
           {NAV.map((item) => (
-            <a key={item.href} href={item.href} className="nav-link text-sm font-semibold text-navy/70 transition-colors hover:text-primary">
+            <a key={item.href} href={item.href} className="nav-link whitespace-nowrap text-sm font-semibold text-navy/70 transition-colors hover:text-primary">
               {item.label}
             </a>
           ))}
         </nav>
         <div className="hidden items-center gap-5 md:flex">
-          <a href={CONTACTS.phoneHref} className="group flex items-center gap-2 text-sm font-bold text-navy transition-colors hover:text-primary">
+          {/* на lg рядом с меню тесно — телефон скрыт до xl (он есть на первом экране) */}
+          <a href={CONTACTS.phoneHref} className="group flex items-center gap-2 whitespace-nowrap text-sm font-bold text-navy transition-colors hover:text-primary lg:hidden xl:flex">
             <span className="relative grid h-9 w-9 place-items-center rounded-full bg-secondary text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-white">
               <span className="absolute inset-0 animate-pulse-ring rounded-full bg-primary/30" />
               <Phone className="relative h-4 w-4 group-hover:animate-wiggle" />
@@ -240,7 +241,7 @@ const enter = "animate-in fade-in slide-in-from-bottom-6 duration-700 fill-mode-
 function Hero() {
   const doc = DOCTORS[0]
   return (
-    <section id="top" className="container pt-4 md:pt-6">
+    <section id="top" className="container pt-3 md:pt-4">
       <div className="relative isolate overflow-hidden rounded-[2rem] bg-navy animate-in fade-in zoom-in-95 duration-700">
         <img
           src={photo(IMG.hero, 1800)}
@@ -255,19 +256,20 @@ function Hero() {
         <span className="pointer-events-none absolute bottom-24 right-[42%] hidden h-3 w-3 animate-float-slow rounded-full bg-sky-300/60 lg:block" />
         <span className="pointer-events-none absolute right-[52%] top-1/2 hidden h-2 w-2 animate-float rounded-full bg-white/50 [animation-delay:1.5s] lg:block" />
 
-        <div className="grid min-h-[600px] gap-10 p-6 sm:p-10 lg:min-h-[640px] lg:grid-cols-[1.2fr_1fr] lg:p-14">
+        {/* на ноутбуках первый экран целиком помещается в окно под шапкой (но не выше 700px) */}
+        <div className="grid min-h-[560px] gap-10 p-6 sm:p-10 lg:min-h-[min(700px,calc(100svh-6.5rem))] lg:grid-cols-[1.5fr_1fr] lg:p-12">
           <div className="flex flex-col justify-center text-white">
             <p className={cn(enter, "delay-150 mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-medium backdrop-blur")}>
               <Star className="h-4 w-4 animate-spin-slow fill-amber-400 text-amber-400" /> 4.9 · более 1 200 отзывов
             </p>
-            <h1 className={cn(enter, "delay-300 font-display text-4xl font-extrabold uppercase leading-[1.05] tracking-tight sm:text-5xl xl:text-6xl")}>
+            <h1 className={cn(enter, "delay-300 font-display text-4xl font-extrabold uppercase leading-[1.05] tracking-tight sm:text-5xl lg:text-[2.9rem] xl:text-[3.4rem]")}>
               Здоровые зубы&nbsp;—<br />
               <span className="text-shimmer animate-shimmer">красивая</span> улыбка
             </h1>
-            <p className={cn(enter, "delay-500 mt-6 max-w-md text-lg text-white/80")}>
+            <p className={cn(enter, "delay-500 mt-5 max-w-md text-lg text-white/80 lg:mt-4")}>
               Стоматологическая клиника «Белая улыбка»: бережное лечение, современные технологии и забота о каждом пациенте.
             </p>
-            <div className={cn(enter, "delay-700 mt-8 flex flex-wrap items-center gap-4")}>
+            <div className={cn(enter, "delay-700 mt-7 flex flex-wrap items-center gap-4 lg:mt-6")}>
               <Button asChild size="lg" className="group rounded-full bg-white pl-7 pr-2 text-navy shadow-xl hover:bg-sky-300 hover:text-navy">
                 <a href="#booking">
                   Записаться на приём
@@ -278,7 +280,7 @@ function Hero() {
                 {CONTACTS.phone}
               </a>
             </div>
-            <div className="mt-10 flex max-w-lg flex-wrap gap-2">
+            <div className="mt-8 flex max-w-xl flex-wrap gap-2 lg:mt-7">
               {SERVICES.map((s, i) => (
                 <a
                   key={s.title}
