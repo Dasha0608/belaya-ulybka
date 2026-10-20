@@ -1,0 +1,11 @@
+node_modules/
+dist/
+*.log
+
+# локальные настройки редактора и Claude
+.claude/
+.vscode/
+
+# служебные файлы экспорта портфолио
+portfolio/export/.profile/
+portfolio/video/

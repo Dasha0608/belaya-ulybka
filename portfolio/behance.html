@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Белая улыбка — кейс для Behance</title>
+  <link rel="stylesheet" href="./pf.css" />
+  <style>
+    .shot { width: 1400px; }
+    .pad { padding: 100px 110px; }
+    h2.display { font-size: 64px; color: var(--navy); }
+    p.lead { font-size: 22px; line-height: 1.6; color: var(--muted); }
+
+    /* 1. Обложка */
+    .cover { height: 1050px; background: radial-gradient(1200px 700px at 85% 10%, #1c6db6 0%, transparent 60%), linear-gradient(135deg, var(--navy) 0%, var(--navy-950) 100%); color: #fff; }
+    .cover h1 { font-size: 104px; }
+    .cover h1 em { font-style: normal; color: var(--sky); }
+    .cover .sub { margin-top: 26px; font-size: 24px; color: rgba(255,255,255,.75); }
+    .cover .tags { margin-top: 30px; display: flex; gap: 12px; }
+    .cover .laptop { position: absolute; left: 400px; top: 380px; }
+    .cover .phone { position: absolute; left: 1080px; top: 470px; }
+
+    /* 2. О проекте */
+    .about { background: #fff; }
+    .about .grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 90px; margin-top: 40px; }
+    .about h3 { font-size: 22px; color: var(--navy); margin: 30px 0 10px; }
+    .facts { display: grid; gap: 18px; align-content: start; }
+    .fact { padding: 26px 30px; border-radius: 22px; background: var(--sky-50); border: 1px solid var(--line); }
+    .fact small { display: block; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--blue); }
+    .fact b { display: block; margin-top: 6px; font-size: 22px; color: var(--navy); }
+
+    /* 3. Структура */
+    .structure { background: linear-gradient(180deg, var(--sky-50), #fff); }
+    .steps { margin-top: 50px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .step { padding: 28px; border-radius: 24px; background: #fff; box-shadow: 0 10px 30px -15px rgba(12,45,79,.25); border: 1px solid var(--line); }
+    .step .n { font-family: Montserrat; font-weight: 800; font-size: 40px; color: var(--blue); opacity: .25; }
+    .step b { display: block; margin-top: 8px; font-size: 21px; color: var(--navy); }
+    .step p { margin-top: 6px; font-size: 16px; color: var(--muted); line-height: 1.5; }
+
+    /* 4. Стиль */
+    .style { background: #fff; }
+    .colors { margin-top: 50px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 18px; }
+    .colors .swatch div { height: 200px; }
+    .colors .swatch p { padding: 16px 18px; font-weight: 700; color: var(--navy); font-size: 17px; }
+    .colors .swatch p span { display: block; font-weight: 500; color: var(--muted); font-size: 15px; }
+    .type { margin-top: 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .type > div { padding: 30px 34px; border-radius: 24px; background: var(--sky-50); border: 1px solid var(--line); }
+    .type .big { font-size: 90px; line-height: 1; color: var(--navy); }
+    .type b { display: block; margin-top: 14px; font-size: 20px; color: var(--navy); }
+    .type span { color: var(--muted); font-size: 16px; }
+    .ui { margin-top: 30px; display: flex; flex-wrap: wrap; align-items: center; gap: 18px; padding: 34px; border-radius: 24px; background: var(--navy); }
+    .btn { display: inline-flex; align-items: center; gap: 12px; height: 56px; padding: 0 30px; border-radius: 999px; font-weight: 700; font-size: 17px; }
+    .btn.white { background: #fff; color: var(--navy); padding-right: 8px; }
+    .btn.white i { width: 42px; height: 42px; border-radius: 50%; background: var(--blue); color: #fff; display: grid; place-items: center; font-style: normal; }
+    .btn.hover { background: var(--sky); color: var(--navy); padding-right: 8px; box-shadow: 0 16px 30px -10px rgba(125,211,252,.6); transform: translateY(-3px); }
+    .btn.hover i { width: 42px; height: 42px; border-radius: 50%; background: var(--navy); color: #fff; display: grid; place-items: center; font-style: normal; transform: rotate(-45deg); }
+    .btn.blue { background: var(--blue); color: #fff; }
+    .chip { padding: 12px 22px; border-radius: 999px; border: 1px solid rgba(255,255,255,.3); color: #fff; font-weight: 600; }
+    .chip.on { background: #fff; color: var(--navy); }
+    .ui label { color: rgba(255,255,255,.6); font-size: 14px; font-weight: 600; width: 100%; }
+
+    /* 5. Десктоп */
+    .desk { background: linear-gradient(180deg, #e3edf6, #f4f8fc); padding: 70px 60px; }
+    .desk .cap { display: flex; justify-content: space-between; align-items: end; margin-bottom: 34px; }
+    .desk .cap h2 { font-size: 44px; }
+
+    /* 6. Интерактив */
+    .motion { background: var(--navy); color: #fff; }
+    .motion h2.display { color: #fff; }
+    .motion .grid { display: grid; grid-template-columns: 1fr 1.35fr; gap: 60px; margin-top: 50px; align-items: start; }
+    .motion ul { list-style: none; display: grid; gap: 16px; }
+    .motion li { display: flex; gap: 16px; padding: 18px 22px; border-radius: 18px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); font-size: 17px; line-height: 1.45; color: rgba(255,255,255,.85); }
+    .motion li b { color: #fff; display: block; font-size: 18px; }
+    .motion li .dot { flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--sky); color: var(--navy); display: grid; place-items: center; font-weight: 800; }
+    .motion .note { margin-top: 14px; font-size: 16px; color: var(--sky); }
+
+    /* 7. Мобильная версия */
+    .mobile { background: linear-gradient(180deg, #fff, var(--ice)); }
+    .phones { margin-top: 60px; display: flex; align-items: flex-start; justify-content: space-between; }
+    .phones .phone:nth-child(even) { margin-top: 60px; }
+
+    /* 8. Спасибо */
+    .thanks { height: 560px; background: linear-gradient(135deg, var(--navy), var(--navy-950)); color: #fff; display: grid; place-items: center; text-align: center; }
+    .thanks .script { font-size: 120px; color: #e0f2fe; line-height: 1; }
+    .thanks p { margin-top: 26px; font-size: 22px; color: rgba(255,255,255,.7); }
+  </style>
+</head>
+<body>
+
+<!-- 1. Обложка -->
+<section class="shot cover pad" data-name="01-cover">
+  <div class="tooth" data-tooth="0.5" style="right:-120px;top:-160px;width:700px;height:700px;color:rgba(255,255,255,.06)"></div>
+  <p class="eyebrow light" style="color:var(--sky)">Концепт · Лендинг · 2026</p>
+  <h1 class="display" style="margin-top:22px">Белая <em>улыбка</em></h1>
+  <p class="sub">Лендинг стоматологической клиники — UI/UX дизайн и вёрстка</p>
+  <div class="tags"><span class="pill">React</span><span class="pill">Tailwind CSS</span><span class="pill">shadcn/ui</span><span class="pill">Адаптив</span></div>
+  <p class="script" style="position:absolute;right:110px;top:34px;font-size:50px;line-height:1.05;text-align:right;color:#bae6fd;transform:rotate(-6deg)">Здоровые зубы —<br>красивая улыбка</p>
+  <div class="laptop">
+    <div class="laptop-lid"><div class="screen" style="--w:1440;--h:900;--s:0.58"><iframe src="/" loading="eager"></iframe></div></div>
+    <div class="laptop-base"></div>
+  </div>
+  <div class="phone"><div class="screen" style="--w:390;--h:844;--s:0.62"><iframe src="/"></iframe></div></div>
+</section>
+
+<!-- 2. О проекте -->
+<section class="shot about pad" data-name="02-about">
+  <p class="eyebrow">О проекте</p>
+  <div class="grid">
+    <div>
+      <h2 class="display">Современная стоматология, которой доверяют</h2>
+      <h3>Задача</h3>
+      <p class="lead">Создать светлый, вызывающий доверие лендинг для стоматологической клиники: показать услуги и цены, врачей и отзывы и привести посетителя к записи на приём.</p>
+      <h3>Решение</h3>
+      <p class="lead">Глубокий синий и чистый белый, крупные фотографии и понятная структура. Запись доступна с каждого экрана, а анимации делают сайт живым, не отвлекая от главного.</p>
+    </div>
+    <div class="facts">
+      <div class="fact"><small>Тип</small><b>Лендинг · концепт</b></div>
+      <div class="fact"><small>Роль</small><b>UI/UX дизайн, вёрстка</b></div>
+      <div class="fact"><small>Стек</small><b>React · Tailwind CSS · shadcn/ui</b></div>
+      <div class="fact"><small>Блоков</small><b>9 секций · адаптив 375–1920 px</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Структура -->
+<section class="shot structure pad" data-name="03-structure">
+  <p class="eyebrow">Структура</p>
+  <h2 class="display" style="margin-top:18px">Путь пациента — к записи</h2>
+  <div class="steps">
+    <div class="step"><div class="n">01</div><b>Первый экран</b><p>Оффер, кнопка записи, услуги и карточка врача</p></div>
+    <div class="step"><div class="n">02</div><b>Услуги</b><p>6 карточек с фото и ценами «от»</p></div>
+    <div class="step"><div class="n">03</div><b>О клинике</b><p>Подход, врачи и цифры доверия</p></div>
+    <div class="step"><div class="n">04</div><b>Кабинеты</b><p>Галерея интерьеров клиники</p></div>
+    <div class="step"><div class="n">05</div><b>Отзывы</b><p>4 карточки с фото пациентов</p></div>
+    <div class="step"><div class="n">06</div><b>Призыв</b><p>Баннер «Запишитесь сегодня»</p></div>
+    <div class="step"><div class="n">07</div><b>Запись и контакты</b><p>Форма с проверкой, телефон, адрес, часы</p></div>
+    <div class="step"><div class="n">08</div><b>Подвал</b><p>Навигация, разделы для пациентов, соцсети</p></div>
+  </div>
+</section>
+
+<!-- 4. Стиль -->
+<section class="shot style pad" data-name="04-style">
+  <p class="eyebrow">Визуальный стиль</p>
+  <h2 class="display" style="margin-top:18px">Цвет, шрифт, интерфейс</h2>
+  <div class="colors">
+    <div class="swatch"><div style="background:#0c2d4f"></div><p>Deep Navy<span>#0C2D4F · основной</span></p></div>
+    <div class="swatch"><div style="background:#1c6db6"></div><p>Clinic Blue<span>#1C6DB6</span></p></div>
+    <div class="swatch"><div style="background:#7dd3fc"></div><p>Sky<span>#7DD3FC</span></p></div>
+    <div class="swatch"><div style="background:#eaf4fc"></div><p>Ice<span>#EAF4FC</span></p></div>
+    <div class="swatch"><div style="background:#ffffff"></div><p>White<span>#FFFFFF</span></p></div>
+  </div>
+  <div class="type">
+    <div><div class="big display" style="text-transform:none">Аа</div><b>Montserrat ExtraBold</b><span>Заголовки, капс</span></div>
+    <div><div class="big" style="font-family:Manrope;font-weight:700">Аа</div><b>Manrope</b><span>Основной текст и интерфейс</span></div>
+    <div><div class="big script" style="color:var(--blue)">Аа</div><b>Caveat</b><span>Рукописные акценты</span></div>
+  </div>
+  <div class="ui">
+    <label>Кнопки и состояния</label>
+    <span class="btn white">Записаться на приём <i>→</i></span>
+    <span class="btn hover">Записаться на приём <i>→</i></span>
+    <span class="btn blue">Записаться</span>
+    <span class="chip">Имплантация</span>
+    <span class="chip on">Отбеливание</span>
+  </div>
+</section>
+
+<!-- 5. Десктоп: страница целиком, тремя модулями -->
+<section class="shot desk" data-name="05-desktop-1" style="width:1400px">
+  <div class="cap"><h2 class="display" style="color:var(--navy)">Десктоп</h2><p class="eyebrow">Первый экран и услуги</p></div>
+  <div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>belaya-ulybka.ru</span></div>
+    <div class="screen" style="--w:1280;--h:5800;--s:1"><iframe src="/" data-from="start" data-to="#about"></iframe></div></div>
+</section>
+<section class="shot desk" data-name="06-desktop-2" style="width:1400px">
+  <div class="browser"><div class="screen" style="--w:1280;--h:5800;--s:1"><iframe src="/" data-from="#about" data-to="#reviews"></iframe></div></div>
+</section>
+<section class="shot desk" data-name="07-desktop-3" style="width:1400px">
+  <div class="browser"><div class="screen" style="--w:1280;--h:5800;--s:1"><iframe src="/" data-from="#reviews" data-to="end"></iframe></div></div>
+</section>
+
+<!-- 6. Интерактив -->
+<section class="shot motion pad" data-name="08-motion">
+  <div class="tooth" data-tooth="0.5" style="left:-140px;bottom:-200px;width:600px;height:600px;color:rgba(255,255,255,.05)"></div>
+  <p class="eyebrow light">Интерактив</p>
+  <h2 class="display" style="margin-top:18px">Живой и динамичный</h2>
+  <div class="grid">
+    <ul>
+      <li><span class="dot">1</span><div><b>Появление при прокрутке</b>Блоки и карточки выплывают по очереди</div></li>
+      <li><span class="dot">2</span><div><b>Наведение</b>Кнопки меняют цвет, карточки поднимаются, фото приближается</div></li>
+      <li><span class="dot">3</span><div><b>Счётчики</b>Цифры доверия «набегают» от нуля</div></li>
+      <li><span class="dot">4</span><div><b>Бегущая строка</b>Услуги клиники в непрерывном движении</div></li>
+      <li><span class="dot">5</span><div><b>Форма</b>Маска телефона, встряхивание при ошибке, анимированный успех</div></li>
+    </ul>
+    <div>
+      <div class="browser" style="box-shadow:0 40px 80px -20px rgba(0,0,0,.5)"><div class="screen" style="--w:1280;--h:5800;--s:0.6"><iframe id="hover-demo" src="/" data-from="#services" data-to="#about"></iframe></div></div>
+      <p class="note">↑ Наведение на карточку: подъём, синий градиент, «Записаться →»</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Мобильная версия -->
+<section class="shot mobile pad" data-name="09-mobile">
+  <p class="eyebrow">Адаптив</p>
+  <h2 class="display" style="margin-top:18px">Мобильная версия</h2>
+  <div class="phones">
+    <div class="phone"><div class="screen" style="--w:390;--h:844;--s:0.68"><iframe src="/" data-scroll="0"></iframe></div></div>
+    <div class="phone"><div class="screen" style="--w:390;--h:844;--s:0.68"><iframe src="/" data-scroll="#services"></iframe></div></div>
+    <div class="phone"><div class="screen" style="--w:390;--h:844;--s:0.68"><iframe src="/" data-scroll="#reviews"></iframe></div></div>
+    <div class="phone"><div class="screen" style="--w:390;--h:844;--s:0.68"><iframe src="/" data-scroll="#booking"></iframe></div></div>
+  </div>
+</section>
+
+<!-- 8. Спасибо -->
+<section class="shot thanks" data-name="10-thanks">
+  <div class="tooth" data-tooth="0.5" style="right:80px;top:60px;width:340px;height:340px;color:rgba(255,255,255,.07)"></div>
+  <div>
+    <p class="script">Спасибо за просмотр!</p>
+    <p>Нужен такой же сайт? Пишите в Telegram: <b data-nick style="color:var(--sky)"></b></p>
+  </div>
+</section>
+
+<script src="./pf.js"></script>
+</body>
+</html>

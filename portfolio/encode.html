@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ru">
+<head><meta charset="UTF-8" /><title>encode</title></head>
+<body style="margin:0;background:#000">
+<canvas id="c"></canvas>
+<script>
+// Склейка кадров (JPEG + время) в видео через MediaRecorder.
+// Вызывается из record.mjs: window.encode({ width, height, frames }, fps)
+window.encode = async (meta, fps = 30) => {
+  const { width, height, frames } = meta
+  const canvas = document.getElementById("c")
+  canvas.width = width
+  canvas.height = height
+  const ctx = canvas.getContext("2d")
+
+  const types = ["video/mp4;codecs=avc1.640028", "video/mp4;codecs=avc1.42E01F", "video/mp4", "video/webm;codecs=vp9", "video/webm"]
+  const mimeType = types.find((t) => MediaRecorder.isTypeSupported(t))
+  const stream = canvas.captureStream(fps)
+  const rec = new MediaRecorder(stream, { mimeType, videoBitsPerSecond: 10_000_000 })
+  const chunks = []
+  rec.ondataavailable = (e) => e.data.size && chunks.push(e.data)
+
+  // кадры отдаёт record.mjs через window.getFrame (base64 JPEG)
+  const load = (i) => window.getFrame(i).then((b64) => fetch("data:image/jpeg;base64," + b64)).then((r) => r.blob()).then(createImageBitmap)
+  const AHEAD = 24
+  const queue = new Map()
+  for (let i = 0; i < Math.min(AHEAD, frames.length); i++) queue.set(i, load(i))
+
+  // первый кадр рисуем до старта записи
+  ctx.drawImage(await queue.get(0), 0, 0, width, height)
+  rec.start(1000)
+  const t0 = performance.now()
+  for (let i = 0; i < frames.length; i++) {
+    const bmp = await queue.get(i)
+    queue.delete(i)
+    if (i + AHEAD < frames.length) queue.set(i + AHEAD, load(i + AHEAD))
+    const due = t0 + (frames[i].t - frames[0].t) * 1000
+    const wait = due - performance.now()
+    if (wait > 0) await new Promise((r) => setTimeout(r, wait))
+    ctx.drawImage(bmp, 0, 0, width, height)
+    bmp.close()
+  }
+  await new Promise((r) => setTimeout(r, 800))
+  rec.stop()
+  await new Promise((r) => (rec.onstop = r))
+  window.__video = new Blob(chunks, { type: mimeType })
+  return { mimeType, size: window.__video.size, seconds: frames[frames.length - 1].t - frames[0].t }
+}
+
+// Отдаём готовое видео кусками в base64
+window.readChunk = async (start, len) => {
+  const buf = new Uint8Array(await window.__video.slice(start, start + len).arrayBuffer())
+  let s = ""
+  for (let i = 0; i < buf.length; i += 0x8000) s += String.fromCharCode.apply(null, buf.subarray(i, i + 0x8000))
+  return btoa(s)
+}
+</script>
+</body>
+</html>

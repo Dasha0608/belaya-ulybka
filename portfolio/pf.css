@@ -1,0 +1,56 @@
+/* Общие стили для страниц портфолио (Behance-модули и посты) */
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Manrope:wght@400;500;600;700;800&family=Montserrat:wght@500;600;700;800;900&display=swap");
+
+:root {
+  --navy: #0c2d4f;
+  --navy-950: #061a30;
+  --blue: #1c6db6;
+  --sky: #7dd3fc;
+  --sky-50: #f0f9ff;
+  --ice: #eaf4fc;
+  --ink: #0d2238;
+  --muted: #5f7186;
+  --line: #dbe7f2;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Manrope, system-ui, sans-serif; color: var(--ink); background: #cfd8e3; -webkit-font-smoothing: antialiased; }
+
+.shot { position: relative; overflow: hidden; margin: 0 auto 40px; }
+.display { font-family: Montserrat, sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; line-height: 1.02; }
+.script { font-family: Caveat, cursive; font-weight: 700; }
+.eyebrow { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 18px; color: var(--blue); }
+.eyebrow::before { content: ""; width: 40px; height: 2px; background: currentColor; }
+.light .eyebrow { color: var(--sky); }
+.pill { display: inline-flex; align-items: center; gap: 10px; padding: 10px 22px; border-radius: 999px; border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.1); color: #fff; font-weight: 600; backdrop-filter: blur(8px); }
+
+/* Живой сайт внутри рамки: iframe рендерится в реальном размере и масштабируется */
+.screen { position: relative; overflow: hidden; width: calc(var(--w) * var(--s) * 1px); height: calc(var(--h) * var(--s) * 1px); background: #fff; }
+.screen iframe { position: absolute; left: 0; top: 0; border: 0; width: calc(var(--w) * 1px); height: calc(var(--h) * 1px); transform: scale(var(--s)); transform-origin: 0 0; pointer-events: none; }
+
+/* Окно браузера */
+.browser { border-radius: 18px; overflow: hidden; background: #fff; box-shadow: 0 40px 80px -20px rgba(6, 26, 48, .45), 0 0 0 1px rgba(12,45,79,.08); }
+.browser-bar { height: 44px; display: flex; align-items: center; gap: 8px; padding: 0 18px; background: #f2f6fa; border-bottom: 1px solid var(--line); }
+.browser-bar i { width: 12px; height: 12px; border-radius: 50%; background: #ff5f57; }
+.browser-bar i:nth-child(2) { background: #febc2e; }
+.browser-bar i:nth-child(3) { background: #28c840; }
+.browser-bar span { margin-left: 18px; flex: 1; max-width: 420px; height: 26px; border-radius: 8px; background: #fff; border: 1px solid var(--line); font-size: 13px; color: var(--muted); display: flex; align-items: center; padding: 0 12px; }
+
+/* Ноутбук */
+.laptop { position: relative; }
+.laptop-lid { padding: 18px 18px 22px; border-radius: 26px 26px 0 0; background: linear-gradient(#1b2633, #0b121b); box-shadow: 0 50px 90px -30px rgba(0,0,0,.6); }
+.laptop-lid .screen { border-radius: 6px; }
+.laptop-base { position: relative; height: 22px; margin: 0 -70px; border-radius: 0 0 22px 22px; background: linear-gradient(#e7edf3, #a9b6c4); }
+.laptop-base::before { content: ""; position: absolute; left: 50%; top: 0; width: 140px; height: 9px; transform: translateX(-50%); border-radius: 0 0 12px 12px; background: #c3ced9; }
+
+/* Телефон */
+.phone { position: relative; padding: 12px; border-radius: 54px; background: #0b121b; box-shadow: 0 40px 80px -25px rgba(6,26,48,.55), inset 0 0 0 2px #2a3644; }
+.phone .screen { border-radius: 42px; }
+.phone::after { content: ""; position: absolute; top: 24px; left: 50%; width: 96px; height: 28px; transform: translateX(-50%); border-radius: 20px; background: #0b121b; z-index: 2; }
+
+.tooth { position: absolute; pointer-events: none; }
+.swatch { border-radius: 22px; overflow: hidden; box-shadow: 0 0 0 1px rgba(12,45,79,.08); }
+
+/* Строка состояния телефона, чтобы вырез не закрывал шапку сайта */
+.phone .screen iframe:not([data-from]) { top: 40px; }
+.phone .screen::before { content: "9:41"; position: absolute; inset: 0 0 auto 0; height: 40px; padding: 11px 0 0 30px; background: #fff; font: 700 14px Manrope, sans-serif; color: #0d2238; z-index: 1; }

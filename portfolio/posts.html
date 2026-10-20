@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Белая улыбка — посты для соцсетей</title>
+  <link rel="stylesheet" href="./pf.css" />
+  <style>
+    .slide { width: 1080px; height: 1350px; padding: 80px; }
+    .story { width: 1080px; height: 1920px; }
+    .navy { background: radial-gradient(900px 600px at 90% 0%, #1c6db6 0%, transparent 60%), linear-gradient(150deg, var(--navy), var(--navy-950)); color: #fff; }
+    .ice { background: linear-gradient(180deg, #f4f9fe, #dcebf8); }
+    .title { font-size: 72px; color: var(--navy); }
+    .navy .title { color: #fff; }
+    .num { position: absolute; right: 80px; top: 86px; font-family: Montserrat; font-weight: 800; font-size: 26px; color: var(--blue); opacity: .5; }
+    .navy .num { color: var(--sky); }
+    .handle { position: absolute; left: 80px; bottom: 60px; font-weight: 700; font-size: 26px; color: var(--muted); }
+    .navy .handle { color: rgba(255,255,255,.6); }
+    .swipe { position: absolute; right: 80px; bottom: 56px; display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 26px; color: var(--sky); }
+    .ice .swipe { color: var(--blue); }
+    .feat { display: flex; gap: 14px; margin-top: 40px; flex-wrap: wrap; }
+    .feat span { padding: 14px 24px; border-radius: 999px; background: #fff; border: 1px solid var(--line); font-weight: 700; font-size: 22px; color: var(--navy); box-shadow: 0 10px 20px -12px rgba(12,45,79,.3); }
+  </style>
+</head>
+<body>
+
+<!-- 1. Обложка -->
+<section class="shot slide navy" data-name="post-1">
+  <div class="tooth" data-tooth="0.5" style="right:-140px;top:-120px;width:620px;height:620px;color:rgba(255,255,255,.06)"></div>
+  <span class="pill" style="font-size:22px">Новый проект · лендинг</span>
+  <h1 class="display" style="font-size:118px;margin-top:40px">Белая<br><span style="color:var(--sky)">улыбка</span></h1>
+  <p style="margin-top:24px;font-size:30px;color:rgba(255,255,255,.75)">Сайт для стоматологической клиники</p>
+  <div class="laptop" style="position:absolute;left:110px;top:610px">
+    <div class="laptop-lid"><div class="screen" style="--w:1440;--h:900;--s:0.5"><iframe src="/"></iframe></div></div>
+    <div class="laptop-base"></div>
+  </div>
+  <div class="phone" style="position:absolute;left:740px;top:560px"><div class="screen" style="--w:390;--h:844;--s:0.58"><iframe src="/"></iframe></div></div>
+  <p class="handle" data-nick></p>
+  <p class="swipe">листайте →</p>
+</section>
+
+<!-- 2. Первый экран -->
+<section class="shot slide ice" data-name="post-2">
+  <span class="num">02</span>
+  <p class="eyebrow" style="font-size:24px">Первый экран</p>
+  <h2 class="display title" style="margin-top:20px">Доверие<br>с первых секунд</h2>
+  <div class="browser" style="margin-top:50px"><div class="browser-bar"><i></i><i></i><i></i><span>belaya-ulybka.ru</span></div>
+    <div class="screen" style="--w:1280;--h:5800;--s:0.719"><iframe src="/" data-from="start" data-to="#services"></iframe></div></div>
+  <div class="feat"><span>Крупное фото</span><span>Запись в 1 клик</span><span>Карточка врача</span></div>
+  <p class="handle" data-nick></p>
+</section>
+
+<!-- 3. Услуги -->
+<section class="shot slide ice" data-name="post-3">
+  <span class="num">03</span>
+  <p class="eyebrow" style="font-size:24px">Услуги</p>
+  <h2 class="display title" style="margin-top:20px">Фото, цены<br>и анимации</h2>
+  <div class="browser" style="margin-top:50px"><div class="browser-bar"><i></i><i></i><i></i><span>belaya-ulybka.ru/#services</span></div>
+    <div class="screen" style="--w:1280;--h:5800;--s:0.719"><iframe id="hover-post" src="/" data-from="#services" data-to="#about"></iframe></div></div>
+  <div class="feat"><span>Наведение</span><span>Появление при прокрутке</span><span>Счётчики</span></div>
+  <p class="handle" data-nick></p>
+</section>
+
+<!-- 4. Мобильная версия -->
+<section class="shot slide navy" data-name="post-4">
+  <span class="num">04</span>
+  <p class="eyebrow light" style="font-size:24px;color:var(--sky)">Адаптив</p>
+  <h2 class="display title" style="margin-top:20px">Удобно<br>с телефона</h2>
+  <div style="position:absolute;left:80px;right:80px;top:470px;display:flex;align-items:flex-start;justify-content:space-between">
+    <div class="phone"><div class="screen" style="--w:390;--h:844;--s:0.9"><iframe src="/" data-scroll="0"></iframe></div></div>
+    <div class="phone" style="margin-top:-60px"><div class="screen" style="--w:390;--h:844;--s:0.9"><iframe src="/" data-scroll="#booking"></iframe></div></div>
+  </div>
+  <p class="handle" data-nick></p>
+</section>
+
+<!-- 5. Стиль + призыв -->
+<section class="shot slide ice" data-name="post-5">
+  <span class="num">05</span>
+  <p class="eyebrow" style="font-size:24px">Стиль</p>
+  <h2 class="display title" style="margin-top:20px">Синий, белый<br>и воздух</h2>
+  <div style="display:flex;gap:22px;margin-top:56px">
+    <div style="width:150px;height:150px;border-radius:50%;background:#0c2d4f"></div>
+    <div style="width:150px;height:150px;border-radius:50%;background:#1c6db6"></div>
+    <div style="width:150px;height:150px;border-radius:50%;background:#7dd3fc"></div>
+    <div style="width:150px;height:150px;border-radius:50%;background:#eaf4fc;box-shadow:inset 0 0 0 2px #cfe0ef"></div>
+    <div style="width:150px;height:150px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 2px #cfe0ef"></div>
+  </div>
+  <div style="display:flex;gap:60px;margin-top:60px;align-items:flex-end;color:var(--navy)">
+    <div><div class="display" style="font-size:96px;text-transform:none">Аа</div><p style="font-size:22px;font-weight:700;margin-top:8px">Montserrat</p></div>
+    <div><div style="font-size:96px;font-weight:700">Аа</div><p style="font-size:22px;font-weight:700;margin-top:8px">Manrope</p></div>
+    <div><div class="script" style="font-size:104px;color:var(--blue)">Аа</div><p style="font-size:22px;font-weight:700;margin-top:8px">Caveat</p></div>
+  </div>
+  <div style="position:absolute;left:80px;right:80px;bottom:80px;padding:50px;border-radius:36px;background:var(--navy);color:#fff">
+    <p class="display" style="font-size:52px">Нужен такой же сайт?</p>
+    <p style="margin-top:18px;font-size:28px;color:rgba(255,255,255,.75)">Пишите в Telegram — обсудим ваш проект</p>
+    <p style="margin-top:30px;display:inline-flex;align-items:center;gap:16px;padding:18px 18px 18px 36px;border-radius:999px;background:#fff;color:var(--navy);font-weight:800;font-size:30px">
+      <span data-nick></span><span style="width:56px;height:56px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center">→</span>
+    </p>
+  </div>
+</section>
+
+<!-- Вертикальный пост / сторис -->
+<section class="shot story" data-name="story" style="background:linear-gradient(160deg,#cfe6f7 0%,#8fc3e6 45%,#2d6f9e 100%)">
+  <div class="tooth" data-tooth="0.4" style="left:-160px;bottom:-140px;width:700px;height:700px;color:rgba(255,255,255,.18)"></div>
+  <div style="position:absolute;left:0;right:0;top:70px;text-align:center">
+    <span class="pill" style="font-size:34px;padding:20px 44px;border:0;background:var(--navy);box-shadow:0 20px 40px -15px rgba(6,26,48,.5)">Заказать сайт в tg: <b data-nick style="margin-left:8px"></b></span>
+  </div>
+  <div class="browser" style="position:absolute;left:110px;top:220px;width:860px;height:1560px;border-radius:24px">
+    <div class="browser-bar"><i></i><i></i><i></i><span>belaya-ulybka.ru</span></div>
+    <div class="screen" style="--w:1280;--h:5800;--s:0.672"><iframe src="/" data-from="start" data-to="end"></iframe></div>
+  </div>
+  <p class="script" style="position:absolute;left:0;right:0;bottom:46px;text-align:center;font-size:64px;color:#fff;text-shadow:0 4px 20px rgba(6,26,48,.35)">Лендинг «Белая улыбка»</p>
+</section>
+
+<script src="./pf.js"></script>
+</body>
+</html>
